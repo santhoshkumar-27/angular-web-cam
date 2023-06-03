@@ -1,0 +1,20 @@
+<div>
+    <label for="cameraSelect">Camera:</label>
+    <select id="cameraSelect" [(ngModel)]="selectedVedioDevice" (change)="changeDevice()">
+        <option value="{{list.groupId}}" *ngFor="let list of vedioDeviceList">{{list.label}}</option>
+    </select>
+</div>
+<div>
+    <label for="audioSelect">Audio:</label>
+    <select id="audioSelect" [(ngModel)]="selectedAudioDevice" (change)="changeDevice()">
+        <option value="{{list.groupId}}" *ngFor="let list of audioDeviceList">{{list.label}}</option>
+    </select>
+</div>
+<video autoplay="true" id="videoElement" #videoEle></video>
+<button (click)="vedioMethod(false, 'video')">turnOff vedio</button>
+<button (click)="vedioMethod(true, 'video')">turnon vedio</button>
+<button (click)="vedioMethod(false, 'audio')">turnOff audio</button>
+<button (click)="vedioMethod(true, 'audio')">turnon audio</button>
+<button (click)="takeSnapshot()">takeSnapshot</button>
+<div *ngIf="!selectedVedioDevice" id="videoElement" style="background-color: black;">
+no camera found</div>
